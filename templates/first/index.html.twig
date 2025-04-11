@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+    Hello FirstController!
+{% endblock %}
+
+{% block body %}
+    <h1>Hello {{ name }} 3omrek {{ age }}</h1>
+    <hr>
+    <div class="alert alert-danger">
+        {{ render(controller('App\\Controller\\FirstController::showRandomTab')) }}
+    </div>
+
+    <hr>
+    <div class="alert alert-warning">
+        {{ render(controller('App\\Controller\\FirstController::showRandomTab', {nb: 10})) }}git
+    </div>
+
+{% endblock %}

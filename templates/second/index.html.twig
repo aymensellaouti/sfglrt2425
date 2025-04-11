@@ -1,0 +1,21 @@
+{% extends 'second/layout.html.twig' %}
+
+{% block title %}
+   {{ parent() }} Second
+{% endblock %}
+
+{% block body %}
+   {{ include('second/fragments/hello.html.twig', {
+      name: esmElParam,
+      firstname: 'aymen'
+   }) }}
+   <h1>Hello {{ esmElParam }} a {{ age }} ans</h1>
+
+   {{ render(controller('App\\Controller\\FirstController::showRandomTab')) }}
+   <tr></tr>
+   {{ render(controller('App\\Controller\\FirstController::showRandomTab', {nb:10})) }}
+{% endblock %}
+
+{#{% block body1 %}#}
+{#   after#}
+{#{% endblock %}#}
