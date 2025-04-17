@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/first')]
+#[Route('/test')]
 final class FirstController extends AbstractController{
     #[Route('/{name?samar}/{age<\d{1,3}>?42}', name: 'app_first'
 //        , defaults: [

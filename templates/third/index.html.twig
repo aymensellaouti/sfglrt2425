@@ -1,0 +1,26 @@
+{% extends 'third/layout.html.twig' %}
+
+{% block title %}
+   {{ parent() }} Third controller
+{% endblock %}
+
+{% block body %}
+   <div class="alert alert-info">
+
+   <p>
+      <a href="{{ path('app_first') }}"> first </a>
+   </p>
+   {{ include('second/fragments/hello.html.twig', {
+      'firstname':'aymen', 'name': 'sellaouti'
+   }) }}
+
+   <hr>
+
+   {{ render(controller('App\\Controller\\FirstController::showRandomTab')) }}
+
+   <hr>
+
+   {{ render(controller('App\\Controller\\FirstController::showRandomTab', {nb:10})) }}
+   </div>
+
+{% endblock %}
