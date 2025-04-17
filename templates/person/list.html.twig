@@ -1,0 +1,21 @@
+{% extends 'third/layout.html.twig' %}
+
+{% block body %}
+    <div class="alert alert-danger">
+        Liste des personnes
+    </div>
+
+    <ol class="list-group">
+        {% for person in persons %}
+        <li class="list-group list-group-item {% if loop.index is even %} list-group-item-danger {% else %} list-group-item-warning{% endif %}">
+            {{ person.name }} // {{ person.age }}
+            <a href="{{ path('delete_person', {id: person.id}) }}">X</a>
+        </li>
+        {% endfor %}
+    </ol>
+{% endblock %}
+
+{% block title %}
+    List persons
+{% endblock %}
+
