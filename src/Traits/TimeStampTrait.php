@@ -18,4 +18,10 @@ trait TimeStampTrait
 
         return $this;
     }
+
+    #[ORM\PrePersist()]
+    public function onPrePersist(): void {
+        $this->createdAt = new \DateTime();
+    }
+
 }

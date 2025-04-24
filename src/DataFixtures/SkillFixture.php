@@ -34,12 +34,12 @@ class SkillFixture extends Fixture
             ["name" => "Créativité", "type" => "Soft Skill", "level" => "Avancé"],
             ["name" => "Conception UI/UX", "type" => "Technique", "level" => "Débutant"]
         ];
-        $generatedSkills = [];
+       // $generatedSkills = [];
         foreach ($skills as $skillElement) {
             $skill = new Skill();
             $skill->setDesignation($skillElement["name"]);
             $manager->persist($skill);
-            $generatedSkills[] = $skill;
+         //   $generatedSkills[] = $skill;
         }
 //        $shared = new \stdClass();
 //        $shared->skills = $generatedSkills;

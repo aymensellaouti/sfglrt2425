@@ -4,12 +4,19 @@
     <div class="alert alert-info">
         Liste des personnes
     </div>
-
+    <a href="{{ path('add_person', {id:0}) }}">
+        <button class="btn btn-primary">Add Person</button>
+    </a>
     <ol class="list-group">
       {% for person in persons %}
         <li class="list-group-item">
             {{ person.name }} // {{ person.age }}
-            <a href="{{ path('delete_person', {'id': person.id}) }}">X</a>
+            <a href="{{ path('add_person', {'id': person.id}) }}">
+                <button class="btn btn-primary">Edit</button>
+            </a>
+            <a href="{{ path('delete_person', {'id': person.id}) }}">
+                <button class="btn btn-danger">Delete</button>
+            </a>
         </li>
         {% endfor %}
     </ol>

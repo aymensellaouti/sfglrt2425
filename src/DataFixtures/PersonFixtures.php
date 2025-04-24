@@ -26,7 +26,6 @@ class PersonFixtures extends Fixture  implements DependentFixtureInterface
             }
             $person->setAge($faker->numberBetween($min = 18, $max = 60));
             $person->setName($faker->name());
-
             $manager->persist($person);
         }
 
