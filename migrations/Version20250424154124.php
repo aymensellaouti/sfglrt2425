@@ -10,22 +10,22 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20250418135644 extends AbstractMigration
+final class Version20250424154124 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'update age qui devient nullable';
+        return '';
     }
 
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE person CHANGE age age SMALLINT DEFAULT NULL');
+        $this->addSql('ALTER TABLE person ADD created_at DATETIME DEFAULT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE person CHANGE age age SMALLINT NOT NULL');
+        $this->addSql('ALTER TABLE person DROP created_at');
     }
 }

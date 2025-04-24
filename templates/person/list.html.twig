@@ -6,11 +6,22 @@
     </div>
 
     <ol class="list-group">
-      {% for person in persons %}
-        <li class="list-group-item">
-            {{ person.name }} // {{ person.age }}
-            <a href="{{ path('delete_person', {'id': person.id}) }}">X</a>
-        </li>
+        {% for person in persons %}
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-6">
+                        {{ person.name }} // {{ person.age }}
+                    </div>
+
+                    <div class="col"><a class="btn btn-danger" href="{{ path('delete_person', {'id': person.id}) }}">Delete</a>
+                    </div>
+                    <div class="col"><a class="btn btn-primary"
+                                        href="{{ path('edit_person', {'id': person.id}) }}">Edit</a></div>
+
+                </div>
+
+
+            </li>
         {% endfor %}
     </ol>
 {% endblock %}
