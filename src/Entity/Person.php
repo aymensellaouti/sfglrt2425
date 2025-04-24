@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PersonRepository;
+use App\Traits\TimeStampTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
