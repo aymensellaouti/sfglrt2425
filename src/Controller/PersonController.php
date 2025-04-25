@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Person;
+use App\Form\PersonType;
 use App\Repository\PersonRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -33,16 +35,20 @@ final class PersonController extends AbstractController{
             'persons' => $persons,
         ]);
     }
-    #[Route('/add/{name}/{age}', name: 'add_person')]
-    public function index($name, $age): Response
+    #[Route('/edit/{id?0}', name: 'edit_person')]
+    public function index(Request $request, Person $person = null): Response
     {
-        $person = new Person();
-        $person->setName($name);
-        $person->setAge($age);
-        $this->manager->persist($person);
-        $this->manager->flush();
-        return $this->render('person/index.html.twig', [
-            'person' => $person,
+        if(!$person)
+           $person = new Person();
+        $form = $this->createForm(PersonType::class, $person);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->manager->persist($person);
+            $this->manager->flush();
+            return $this->redirectToRoute('list_person');
+        }
+        return $this->render('person/edit.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 
