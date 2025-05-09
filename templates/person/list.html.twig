@@ -14,9 +14,11 @@
             <a href="{{ path('add_person', {'id': person.id}) }}">
                 <button class="btn btn-primary">Edit</button>
             </a>
+            {% if is_granted('ROLE_ADMIN') %}
             <a href="{{ path('delete_person', {'id': person.id}) }}">
                 <button class="btn btn-danger">Delete</button>
             </a>
+            {% endif %}
         </li>
         {% endfor %}
     </ol>
